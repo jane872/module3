@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  ml-service:
+    build: .
+    ports:
+      - "5000:5000"
+    restart: always
+    # 限制资源，符合生产环境规范
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "512M"
