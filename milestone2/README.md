@@ -21,4 +21,4 @@ docker-compose up -d
 
 
 ### badge
-[![MLOps Milestone 0 CI](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml/badge.svg)](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml)
+[![MLOps Milestone 0 CI](https://github.com/jane872/module3/milestone2/actions/workflows/main.yml/badge.svg)](https://github.com/jane872/module3/milestone2/actions/workflows/main.yml)
