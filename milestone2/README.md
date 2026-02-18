@@ -7,10 +7,11 @@ MLOps Course Module 3 Milestone 2 - 容器化ML服务+GitHub Actions CI/CD流水
 
 ## 快速开始
 ### 本地开发运行
+
 ```bash
 # 克隆仓库
-git clone <你的仓库地址>
-cd <仓库名>/UIC-ids568-milestone2
+git clone https://github.com/jane872/module3.git
+cd module3
 # 安装依赖
 pip install -r app/requirements.txt
 # 启动服务
@@ -19,5 +20,5 @@ python app/app.py
 docker-compose up -d
 
 
-### badge test
+### badge
 [![MLOps Milestone 0 CI](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml/badge.svg)](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml)
