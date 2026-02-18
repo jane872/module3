@@ -17,21 +17,31 @@ jobs:
     steps:
       - name: Checkout Code # 拉取仓库代码到运行器
         uses: actions/checkout@v4
+
+      - name: Debug - 查看目录结构（可选，用于定位问题）
+        run: |
+          pwd
+          ls -la
+          ls -la ./milestone2
+
       - name: Set Up Python # 配置Python环境
         uses: actions/setup-python@v5
         with:
           python-version: "3.11" # 与Docker镜像一致
           cache: "pip" # 缓存pip依赖，提升速度
+
       - name: Install Dependencies # 安装运行和测试依赖
-        # 修复：仓库根目录是module3，所以路径改为./milestone2（或直接./，若文件在根目录）
-        working-directory: /home/runner/work/module3/milestone2 
+        working-directory: ./milestone2 # 切换到项目目录
         run: |
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
           pip install pytest requests
+
       - name: Run Pytest # 执行单元测试
-        working-directory: /home/runner/work/module3/milestone2  # 同步修改
-        run: pytest tests/test_app.py -v
+        working-directory: ./milestone2
+        run: |
+          export PYTHONPATH=./
+          pytest tests/test_app.py -v
 
   # 作业2：构建并推送Docker镜像，依赖test作业通过
   build-and-push:
@@ -42,18 +52,21 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Set Up Docker Buildx # 配置Docker构建工具，支持多架构（可选）
         uses: docker/setup-buildx-action@v3
+
       - name: Login to Container Registry # 登录课程容器仓库
         uses: docker/login-action@v3
         with:
           registry: ${{ secrets.REGISTRY_URL }} # 从Secrets获取仓库地址
           username: ${{ secrets.REGISTRY_USERNAME }} # 从Secrets获取用户名
           password: ${{ secrets.REGISTRY_PASSWORD }} # 从Secrets获取密码
+
       - name: Build & Push Docker Image # 构建并推送镜像
         uses: docker/build-push-action@v5
         with:
-          context: ./milestone2 # 同步修改Docker构建上下文
+          context: ./milestone2 # Docker构建上下文（项目根目录）
           push: true # 开启推送
           # 打标：课程仓库/用户名/服务名:语义化版本
           tags: |
