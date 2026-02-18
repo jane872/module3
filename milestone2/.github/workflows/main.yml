@@ -18,6 +18,12 @@ jobs:
       - name: Checkout Code # 拉取仓库代码到运行器
         uses: actions/checkout@v4
 
+      - name: Debug - 查看目录结构（可选，用于定位问题）
+        run: |
+          pwd
+          ls -la
+          ls -la ./milestone2
+
       - name: Set Up Python # 配置Python环境
         uses: actions/setup-python@v5
         with:
