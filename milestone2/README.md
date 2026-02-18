@@ -2,8 +2,8 @@
 MLOps Course Module 3 Milestone 2 - 容器化ML服务+GitHub Actions CI/CD流水线
 
 ## CI/CD Status
-<!-- 替换为你的仓库地址，自动显示工作流状态 -->
-![ML Service CI/CD Pipeline](https://github.com/jane872/UIC/UIC-ids568-milestone2/workflows/ML%20Service%20CI/CD%20Pipeline/badge.svg)
+
+![ML Service CI/CD Pipeline](https://github.com/jane872/module3/milestone2/workflows/ML%20Service%20CI/CD%20Pipeline/badge.svg)
 
 ## 快速开始
 ### 本地开发运行
@@ -17,3 +17,7 @@ pip install -r app/requirements.txt
 python app/app.py
 # 或使用docker-compose本地启动
 docker-compose up -d
+
+
+### badge test
+[![MLOps Milestone 0 CI](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml/badge.svg)](https://github.com/jane872/module3/milestone2/actions/workflows/ci.yml)
