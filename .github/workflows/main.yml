@@ -23,13 +23,13 @@ jobs:
           python-version: "3.11" # 与Docker镜像一致
           cache: "pip" # 缓存pip依赖，提升速度
       - name: Install Dependencies # 安装运行和测试依赖
-        working-directory: /module3/milestone2 # 切换到项目目录
+        working-directory: ./module3/milestone2 # 切换到项目目录
         run: |
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
           pip install pytest requests
       - name: Run Pytest # 执行单元测试
-        working-directory: /module3/milestone2
+        working-directory: ./module3/milestone2
         run: pytest tests/test_app.py -v
 
   # 作业2：构建并推送Docker镜像，依赖test作业通过
@@ -52,7 +52,7 @@ jobs:
       - name: Build & Push Docker Image # 构建并推送镜像
         uses: docker/build-push-action@v5
         with:
-          context: /module3/milestone2 # Docker构建上下文（项目根目录）
+          context: ./module3/milestone2 # Docker构建上下文（项目根目录）
           push: true # 开启推送
           # 打标：课程仓库/用户名/服务名:语义化版本
           tags: |
